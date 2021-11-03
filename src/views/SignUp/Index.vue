@@ -7,6 +7,13 @@
           img(src="@/assets/logo.png")
         p.title.is-6 Vue.App
       form
+        .field 
+          label.label Name
+          .control.has-icons-left
+            input.input.is-danger(type="text", placeholder="Name")
+            span.icon.is-small.is-left
+              i.fas.fa-envelope
+            p.help.is-danger This input is empty
         .field
           label.label Email
           .control.has-icons-left
@@ -20,20 +27,14 @@
             input.input.is-danger(type="password", placeholder="********")
           p.help.is-danger This email is invalid 
         .buttons.is-flex.is-flex-direction-column.is-centered
-          button.button.is-primary.is-small Log In
-          button.button.is-small.is-ghost Sign Up     
+          button.button.is-primary.is-small Sign Up
+          button.button.is-small.is-ghost Go to Log In
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue'
 export default Vue.extend({
-  name: "LogIn",
-});
+  name: "SignUp"
+})
 </script>
-
-<style lang="scss">
-@import "bulma-dracula/src/bulma-dracula.scss";
-.container {
-  height: 100vh;
-}
-</style>
+</script>
