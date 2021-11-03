@@ -10,6 +10,7 @@ const routes: Array<RouteConfig> = [
     name: "Home",
     component: App,
   },
+  
 ];
 
 const router = new VueRouter({
