@@ -10,5 +10,6 @@
 
 module.exports.routes = {
 'POST /users/signup': 'UsersController.signup',
-'POST /users/login': 'UsersController.login'
+'POST /users/login': 'UsersController.login',
+'POST /proyectos/byCompanies': "ProyectosController.byCompanies"
 };
