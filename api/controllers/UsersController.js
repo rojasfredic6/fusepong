@@ -31,7 +31,7 @@ module.exports = {
       }
       const comparedPassword = await bcrypt.compare(contraseña, user.contraseña);
       const token = AuthenticationService.JWTIssuer({user: user.id}, '1 day')
-      return (comparedPassword) ? res.ok({token}) : res.badRequest('Usario No Autorizado').json()
+      return (comparedPassword) ? res.ok({token, user}) : res.badRequest('Usario No Autorizado').json()
     }catch(err){
       return res.serverError(err).json()
     }
