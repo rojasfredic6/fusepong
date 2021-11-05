@@ -27,7 +27,7 @@ module.exports = {
       const {email, contraseña} = await req.allParams();
       const user = await Users.findOne({email});
       if(!user){
-        return res.notFound('Email o Contraseñas Erroneas, No se encuentra el usuario').json()
+        return res.badRequest('Email o Contraseñas Erroneas, No se encuentra el usuario').json()
       }
       const comparedPassword = await bcrypt.compare(contraseña, user.contraseña);
       const token = AuthenticationService.JWTIssuer({user: user.id}, '1 day')
