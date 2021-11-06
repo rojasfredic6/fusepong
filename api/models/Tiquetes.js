@@ -20,6 +20,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    user:{
+      model: 'users',
+      required: true
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
