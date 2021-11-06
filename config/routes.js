@@ -12,5 +12,6 @@ module.exports.routes = {
 'POST /users/signup': 'UsersController.signup',
 'POST /users/login': 'UsersController.login',
 'POST /proyectos/byCompanies': "ProyectosController.byCompanies",
-'POST /historias/historiaData': "HistoriasController.getHistoriaData"
+'POST /historias/historiaData': "HistoriasController.getHistoriaData",
+'POST /tiquetes/comentariosTicket': "TiquetesController.getComentarios"
 };
