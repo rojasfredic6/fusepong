@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.16.0",
+    "axios": "^0.24.0",
     "bulma-dracula": "^1.1.1",
     "core-js": "^3.6.5",
     "css-loader": "^6.5.0",
