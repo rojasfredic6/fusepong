@@ -11,7 +11,7 @@ module.exports = {
       const {id} = req.allParams()
       const proyects = await Proyectos.find({
         where:{ idCompanie: id}
-      })
+      }).populate('historias')
       if(!proyects){
         return res.badRequest('No hay proyectos creados')
       }
