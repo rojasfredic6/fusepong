@@ -21,10 +21,6 @@ module.exports = {
       required: true,
       minLength: 20
     },
-    estadoHistoria: {
-      type: 'string',
-      required: true
-    },
     idUsuario: {
       type: 'string',
       required: true
@@ -43,10 +39,6 @@ module.exports = {
     },
     tickets: {
       collection: 'tiquetes',
-      via: 'historia'
-    },
-    comentarios: {
-      collection: 'comentarios',
       via: 'historia'
     }
   },

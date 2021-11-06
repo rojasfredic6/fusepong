@@ -16,6 +16,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    estadoTicket:{
+      type: 'string',
+      required: true
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -28,7 +32,10 @@ module.exports = {
     historia: {
       model: 'historias'
     },
-    
+    comentarios: {
+        collection: 'comentarios',
+        via: 'ticket'
+    }
   },
 
 };
