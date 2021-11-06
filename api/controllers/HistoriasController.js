@@ -12,7 +12,7 @@ module.exports = {
 getHistoriaData: async function(req, res){
   try{
     const {id} = req.allParams()
-    const data = await Historias.findOne({id}).populate('tickets').populate('comentarios')
+    const data = await Historias.findOne({id}).populate('tickets')
     if(!data){
       return res.badRequest('No se encontraron resultados').json()
     }
