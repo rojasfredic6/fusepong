@@ -23,6 +23,7 @@ export default class Historial extends Vue {
       this.ListaDeTickets = tickets.data;
     } catch (err: any) {
       throw new Error(`${err.response.data}`);
+      
     }
   }
 }
