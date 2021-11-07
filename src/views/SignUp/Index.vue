@@ -99,7 +99,7 @@ export default class SignUp extends Vue {
           this.toggleNotification();
           setTimeout(() => {
             this.$router.push({ name: "LogIn" });
-          }, 3000);
+          }, 1000);
         })
         .catch((err) => {
           if (err.message.includes("already exists")) {

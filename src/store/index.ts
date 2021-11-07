@@ -1,6 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { getCompañias, createUser, loginUser, proyectsByCompanie } from "@/api/api";
+import {
+  getCompañias,
+  createUser,
+  loginUser,
+  proyectsByCompanie,
+  getHistoryData,
+} from "@/api/api";
 
 Vue.use(Vuex);
 
@@ -10,7 +16,8 @@ export default new Vuex.Store({
     userToken: "",
     userData: "",
     companieProyects: "",
-    companieInfo:""
+    companieInfo: "",
+    historyData: "",
   },
   mutations: {
     companiesList(state, payload) {
@@ -18,26 +25,30 @@ export default new Vuex.Store({
     },
     addToken(state, payload) {
       state.userToken = payload.token;
-      state.userData = payload.user
+      state.userData = payload.user;
     },
-    addProyects(state, payload){
-      state.companieProyects = payload
+    addProyects(state, payload) {
+      state.companieProyects = payload;
     },
-    addCompanieInfo(state, payload){
-      state.companieInfo = payload
-    }
+    addCompanieInfo(state, payload) {
+      state.companieInfo = payload;
+    },
+    addHistoryData(state, payload) {
+      state.historyData = payload;
+    },
   },
   actions: {
     async getCompanies(context, payload?) {
       try {
-        const compañias = await getCompañias(payload.id);
-        if(!payload){
+        if (!payload) {
+          const compañias = await getCompañias();
           context.commit("companiesList", compañias.data);
-        }else {
-          context.commit("addCompanieInfo", compañias.data)
+        } else {
+          const compañias = await getCompañias(payload.id);
+          context.commit("addCompanieInfo", compañias.data);
         }
       } catch (err) {
-        console.table(err)
+        console.table(err);
         throw new Error("Error api en vuex");
       }
     },
@@ -58,15 +69,24 @@ export default new Vuex.Store({
         throw new Error(`${err.response.data}`);
       }
     },
-    async getProyects(context, payload){
-      try{
-        const proyects = await proyectsByCompanie(payload)
-        context.commit("addProyects", proyects.data)
-        return proyects
-      }catch(err: any){
-        throw new Error(`${err.response.data}`)
+    async getProyects(context, payload) {
+      try {
+        const proyects = await proyectsByCompanie(payload);
+        context.commit("addProyects", proyects.data);
+        return proyects;
+      } catch (err: any) {
+        throw new Error(`${err.response.data}`);
       }
-    }
+    },
+    async getHistoryData(context, payload) {
+      try {
+        const history = await getHistoryData(payload);
+        context.commit("addHistoryData", history.data);
+        return history;
+      } catch (err) {
+        throw new Error(`${err}`);
+      }
+    },
   },
   modules: {},
 });

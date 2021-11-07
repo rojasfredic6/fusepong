@@ -5,8 +5,9 @@ import App from "@/App.vue";
 import SignUp from "@/views/SignUp/Index.vue";
 import LogIn from "@/views/LogIn/Index.vue";
 import Dashboard from "@/views/Dashboard/Index.vue";
-import Proyects from "@/views/Dashboard/Proyects/Index.vue"
-import Historias from "@/views/Dashboard/Proyects/Historias/Index.vue"
+import Proyects from "@/views/Dashboard/Proyects/Index.vue";
+import Historias from "@/views/Dashboard/Proyects/Historias/Index.vue";
+import Historial from "@/views/Dashboard/Historial/Index.vue";
 
 Vue.use(VueRouter);
 
@@ -31,7 +32,7 @@ const routes: Array<RouteConfig> = [
           requiresAuth: true,
         },
         component: Dashboard,
-        children:[
+        children: [
           {
             path: "",
             name: "Dashboard",
@@ -39,15 +40,24 @@ const routes: Array<RouteConfig> = [
               requiresAuth: true,
             },
             component: Proyects,
-          },{
+          },
+          {
             path: ":id",
             name: "History",
             meta: {
               requiresAuth: true,
             },
-            component: Historias
-          }
-        ]
+            component: Historias,
+          },
+          {
+            path: "/historial/:id",
+            name: "Historial",
+            meta: {
+              requiresAuth: true,
+            },
+            component: Historial,
+          },
+        ],
       },
     ],
   },

@@ -9,12 +9,19 @@ div
       .navbar-item.has-dropdown.is-hoverable
         a.navbar-link.has-text-dark {{user}}
         .navbar-dropdown
-          a.navbar-item.has-text-dark Historial
+          a.navbar-item.has-text-dark(
+            @click="toHistorial()"
+          ) Historial
           hr.navbar-divider
           .navbar-item
             a.has-text-dark Sign Out
   section
     router-view 
+  .footer
+    .content.has-text-centered
+      p
+        strong Developet by: 
+        | Fredic Yohany Rojas Parra 🖥 
 </template>
 
 <script lang="ts">
@@ -27,6 +34,10 @@ export default class Dashboard extends Vue {
   // Computed
   get user(): string {
     return this.$store.state.userData.email;
+  }
+
+  get userId(): string {
+    return this.$store.state.userData.id;
   }
 
   // Hooks
@@ -48,6 +59,10 @@ export default class Dashboard extends Vue {
     } catch (err: any) {
       throw new Error(err);
     }
+  }
+
+  toHistorial() {
+    this.$router.push({ name: "Historial", params: { id: this.userId } });
   }
 }
 </script>
