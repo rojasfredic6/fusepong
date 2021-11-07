@@ -7,10 +7,17 @@ div
       .column.is-8
         p.subtitle.is-4.has-text-centered Tickets
         .box
-          .notification.is-success(
-            v-for="(t, index) in HistoriaData.tickets")
+          p.help.subtitle.has-text-dark.has-text-centered Definicion de estado por colores
+          .tags.are-medium.is-centered
+            span.tag.is-normal.is-danger Activo
+            span.tag.is-normal.is-success En Proceso 
+            span.tag.is-normal Finalizado
+          .notification(
+            v-for="(t, index) in HistoriaData.tickets"
+            :class="t.estadoTicket === 'Activo' ? 'is-danger' : t.estadoTicket === 'En Proceso' ? 'is-success' : ''"
+            )
             button.delete(@click="eliminarTicket(t.id)")
-            p {{ t.descripcionTicket }}
+            p.subtitle.is-6 {{ t.descripcionTicket }}
             .buttons.is-right
               button.button.is-primary.is-light.is-rounded(
                 @click="getComentarios(t.id)"
@@ -184,6 +191,9 @@ export default class Historias extends Vue {
         id,
         token,
       });
+      this.ticketInfo.descripcionTicket = "",
+      this.ticketInfo.estadoTicket = "",
+      this.ticketInfo.id = ""
       this.toggleModalTiquet();
     } catch (err: any) {
       throw new Error(err);
@@ -203,6 +213,11 @@ export default class Historias extends Vue {
       id: route,
       token,
     });
+
+    this.ticketInfo.descripcionTicket = "",
+    this.ticketInfo.estadoTicket = "",
+    this.ticketInfo.id = ""
+
     this.toggleModalEditarTicket();
   }
 
@@ -237,6 +252,7 @@ export default class Historias extends Vue {
         comentario: this.comentarioInfo.comentario,
       });
       await this.getComentarios(this.comentarioInfo.ticketId);
+      this.comentarioInfo.comentario = ""
       this.toggleModalComenario();
     } catch (err) {
       throw new Error(`${err}`);

@@ -14,8 +14,10 @@ div
           ) Historial
           hr.navbar-divider
           .navbar-item
-            a.has-text-dark Sign Out
-  section
+            a.has-text-dark(
+              @click="signOut()"
+            ) Sign Out
+  .hero.is-fullheight
     router-view 
   .footer
     .content.has-text-centered
@@ -64,5 +66,18 @@ export default class Dashboard extends Vue {
   toHistorial() {
     this.$router.push({ name: "Historial", params: { id: this.userId } });
   }
+  async signOut(){
+    try{
+      this.$store.commit("signOut")
+      this.$router.push({name: "LogIn"})
+    }catch(err){
+      throw new Error(`${err}`);
+    }
+  }
 }
 </script>
+
+<style lang="stylus">
+.router_Section
+  height: auto
+</style>

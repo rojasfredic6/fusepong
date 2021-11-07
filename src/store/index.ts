@@ -36,6 +36,14 @@ export default new Vuex.Store({
     addHistoryData(state, payload) {
       state.historyData = payload;
     },
+    signOut(state){
+      state.companies= ""
+      state.userToken= ""
+      state.userData= ""
+      state.companieProyects= ""
+      state.companieInfo= ""
+      state.historyData= ""
+    }
   },
   actions: {
     async getCompanies(context, payload?) {

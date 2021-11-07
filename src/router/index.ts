@@ -50,7 +50,7 @@ const routes: Array<RouteConfig> = [
             component: Historias,
           },
           {
-            path: "/historial/:id",
+            path: "historial/:id",
             name: "Historial",
             meta: {
               requiresAuth: true,
