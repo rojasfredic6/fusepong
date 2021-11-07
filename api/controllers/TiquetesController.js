@@ -25,7 +25,7 @@ module.exports = {
   ticketsByUser: async(req,res) => {
     try{
       const {id} = req.allParams()
-      const tickets = await Tiquetes.find({ where: { user: id }, sort: 'createdAt DESC'})
+      const tickets = await Tiquetes.find({ where: { user: id }, sort: 'createdAt DESC'}).populate('historia')
       if(!tickets){
         return res.badRequest('Not found').json()
       }
