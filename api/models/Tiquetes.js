@@ -34,7 +34,8 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     historia: {
-      model: 'historias'
+      model: 'historias',
+      required: true
     },
     comentarios: {
         collection: 'comentarios',
